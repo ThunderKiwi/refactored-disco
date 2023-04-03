@@ -1,7 +1,6 @@
 # bright byte 1.0 - likert scales and labelled data
 
-<img src="solarislogo.png" alt="Logo" width="200"/>
-![Logo](solarislogo.png)
+<img src="solarislogo.png" alt="Logo" width="300"/>
 
 # naming conventions
 
