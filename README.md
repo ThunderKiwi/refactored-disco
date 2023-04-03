@@ -1,6 +1,11 @@
-# bright byte 1.0 - likert scales and labelled data
-
+# bright byte 1.0
+## transforming likert scales and labelled data
+## provided by Solaris Consulting Group
 <img src="solarislogo.png" alt="Logo" width="300"/>
+
+# learning goals
+
+
 
 # naming conventions
 
