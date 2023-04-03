@@ -1,5 +1,8 @@
 # bright byte 1.0 - likert scales and labelled data
 
+<img src="solarislogo.png" alt="Logo" width="200"/>
+![Logo](solarislogo.png)
+
 # naming conventions
 
 Using naming conventions that group like variables allows for quick and easy variable selection and tranformation. In survey research this could be a validated scale or simply questions with the same response options. Your personalized naming conventions will allow speedy data cleaning over time and your system will become personalized. Here are a few examples:
@@ -206,4 +209,3 @@ labeltemplate <- c("" = 1,
                    "Refused" = 9)
 ```
 
-![Logo](solarislogo.png)
