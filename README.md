@@ -3,6 +3,7 @@
 <img src="solarislogo.png" alt="Logo" width="350"/>
 
 > bright byte series provided by Solaris Consulting Group
+
 > © Solaris Consulting Group, LLC, info@solarisconsultinggroup.com
 
 # learning goals
