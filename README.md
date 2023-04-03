@@ -1,15 +1,26 @@
-# bright byte 1.0 - transforming likert scales and labelled data
-> bright byte series provided by Solaris Consulting Group
+# bright byte 1.0 - labelled data and likert scales
 
-<img src="solarislogo.png" alt="Logo" width="300"/>
+<img src="solarislogo.png" alt="Logo" width="350"/>
+> bright byte series provided by Solaris Consulting Group
+> © Solaris Consulting Group, LLC, info@solarisconsultinggroup.com
 
 # learning goals
 
+In this first Bright Byte, we will answer the following questions: 
+ * How can a little pre-cleaning planning improve our data cleaning process?
+ * How do we create some test data to try our process on?
+ * How do we label numeric variables?
+ * How do we label character variables?
+ * How do we recode labelled variables?
+ * How do we save our data set?
+ 
+You will primarily be using the tidyverse function `mutate()` to transform variables and `across()` to apply those transformations to multiple variables.  Some selection helpers such as `contains()`, `starts_with()`, and `ends_with` will be used in conjunction with the `.names` argument of `across()` to apply naming conventions and select groups of variables. `labelled()` and `rec()` will assist in labeling our variables and recoding our labelled variables.
 
+This is one particular approach to working with labelled data. There are many others. Take what's new to you and discard the rest.
 
-# naming conventions
+# a note about naming conventions
 
-Using naming conventions that group like variables allows for quick and easy variable selection and tranformation. In survey research this could be a validated scale or simply questions with the same response options. Your personalized naming conventions will allow speedy data cleaning over time and your system will become personalized. Here are a few examples:
+Planning our cleaning process and analysis plan is an important but often overlooked step in the data processing pipeline. Creating naming conventions that are easily used allows you to select and transform variables quickly and easily. In survey research, this could be a validated scale or simply questions with the same response options. These conventions do not have to be permanent, but may be dropped after cleaning.  Thinking deeply about your data structure can help avoid misunderstandings and better connect you with your data. Here are a few examples of naming conventions:
  * _r (recoded) 
  * _daX (X point disagree - agree scale)
  * _catX (X categories)
@@ -18,22 +29,18 @@ Using naming conventions that group like variables allows for quick and easy var
 
 # create test data
 
-First lets install and load the required packages
+Since we're using R, lets install and load the required packages
  * tidyverse for data wrangling
  * haven, labelled, likert, and sjmisc for labelled data transformation
 
 ```{r}
-
-install.packages(c("tidyverse", "likert", "haven", "labelled", "sjmisc"))
+install.packages(c("tidyverse", "haven", "labelled", "sjmisc"))
 
 library(tidyverse)
-library(likert)
 library(haven)
 library(labelled)
 library(sjmisc)
-
 ```
-
 
 First, we will specify the number of cases for our test datset.  In this case, we've defined the object `n_sample` the number 100 cases, which we use in the creation of our data set.  We create the data set using `tibble()` to work with tidyverse package. First, we use `seq()` to create a unique, sequential id variable, the length of the sample `n_sample`. The next variables are created using `sample.int()` that samples integers that will represent questionnaire responses to a Likert scale.  We are not dealing with missing data in this tutorial. Remember to specify `replace = TRUE` in order to sample with replacement. Our grouping variable, prepost, is created as a character variable using `sample()` to demonstrate how to create text variables and to show the differences in cleaning various types of data.  
 
