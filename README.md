@@ -31,7 +31,7 @@ Planning our cleaning process and analysis plan is an important but often overlo
  * _rev (reversed)
 
  
-# <img src="omg/coreelement.png" alt="element" width="25"/> create test data
+# <img src="img/coreelement.png" alt="element" width="25"/> create test data
 
 Since we're using R, lets install and load the required packages
  * tidyverse for data wrangling
