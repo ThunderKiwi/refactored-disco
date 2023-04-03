@@ -1,4 +1,4 @@
-# bright byte 1.0 - labelled data and likert scales
+# bRight byte 1.0 - labelled data and likert scales
 
 <img src="solarislogo.png" alt="Logo" width="300"/>
 
@@ -7,7 +7,7 @@
  
 # <img src="coreelement.png" alt="element" width="25"/> learning goals 
 
-In this bright byte, we will answer the following questions: 
+In this bRight byte, we will answer the following questions: 
  * How can a little pre-cleaning planning improve our data cleaning process?
  * How do we create some test data to try our process on?
  * How do we label numeric variables?
