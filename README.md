@@ -1,11 +1,11 @@
 # bright byte 1.0 - labelled data and likert scales
 
-<img src="solarislogo.png" alt="Logo" width="400" class = "float-left"/>
+<img src="solarislogo.png" alt="Logo" width="400"/>
 
 > bright byte series provided by Solaris Consulting Group <br>© 2023 Solaris Consulting Group, LLC. info@solarisconsultinggroup.com
 
  
-# learning goals
+# learning goals <img src="coreelement.png" alt="element" width="50"/>
 
 In this first bright byte, we will answer the following questions: 
  * How can a little pre-cleaning planning improve our data cleaning process?
