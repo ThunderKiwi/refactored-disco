@@ -1,8 +1,8 @@
 # bright byte 1.0 - labelled data and likert scales
 
-<img src="solarislogo.png" alt="Logo" width="350"/>
+<img src="solarislogo.png" alt="Logo" width="400" class = "float-left"/>
 
-> bright byte series provided by Solaris Consulting Group <br>© Solaris Consulting Group, LLC, info@solarisconsultinggroup.com
+> bright byte series provided by Solaris Consulting Group <br>© 2023 Solaris Consulting Group, LLC. info@solarisconsultinggroup.com
 
  
 # learning goals
@@ -82,13 +82,17 @@ da5_labels <- c("Strongly disagree" = 1,
  
 # labelling numeric variables
 
-Now that we have our test data and have defined our Likert scales, lets apply those labels and save the transformed data into the new data set `dat_labelled`.  We use `mutate()` to transform our variables, in this case we're overwriting the existing variables, so be sure to double check your transformations. By using `across(variables, ~labelled())` within `mutate()` we can apply a function, in this case `labelled()`, to multiple variables. `contains()` makes selecting by naming conventions easy, here we're selecting the variables whose names contains "q".  Finally, `~labelled(.x,)` applies the labels we defined above (the ~ and .x are necessary programming nonsense - just make sure they're there for now).
+Now that we have our test data and have defined our Likert scales, lets apply those labels and save the transformed data into the new data set `dat_labelled`.  In this case we are using `mutate()` to transform our variables. By using `across(variables, ~labelled())` within `mutate()` we can apply a function, in this case `labelled()`, to multiple variables. `contains()` makes selecting by naming conventions easy, here we're selecting the variables whose names contains "q".  Finally, `~labelled(.x,)` applies the labels we defined above (the ~ and .x are necessary programming nonsense - just make sure they're there for now).
 
 ```{r}
 dat_labelled <- dat %>%
   mutate(across(contains("q"), ~labelled(.x, labels = da5_labels)))
-  
-# always double check any transformation
+```
+
+We are overwriting the existing variables, so lets be sure to double check our transformations.  We will use `apply(data, 2, table)`, where 2 indicates that we're applying the function `table()` to each of the data set's columns that contain "q" in order to check frequencies (a 1 instead of a 2 would apply `table()` to rows).  Below this we use `lapply(data, str)` to apply `str()` to each variable that contains "q" and output the results in order to check the structure of the transformed variables. This will be used below as well. 
+
+```{r}
+# always double check transformations
 apply(dat %>% select(contains("q")), 2, table)
 apply(dat_labelled %>% select(contains("q")), 2, table)
 lapply(dat %>% select(contains("q")), str)
@@ -106,7 +110,7 @@ dat_labelled.1 <- dat_labelled %>%
   ## creating labelled variables, an example of defining labels directly rather than using predefined labels
   mutate(across("prepost", ~labelled(.x, labels = c(Pre = 1, Post = 2)))) 
 
-# double check your transformation
+# double check transformations
 table(dat_labelled$prepost)
 table(dat_labelled.1$prepost)
 str(dat_labelled$prepost)
@@ -147,7 +151,15 @@ write_rds(dat_labelled.2, "path/to/data/filename.rds")
 # Example Likert scales
 
 ```{r}
-# specify the labels for your Likert scales
+# template for your own likert scales
+labeltemplate <- c("" = 1,
+                   "" = 2,
+                   "" = 3,
+                   "" = 4,
+                   "" = 5,
+                   "Don't know" = 7,
+                   "Refused" = 9)
+                   
 da5_labels <- c("Strongly disagree" = 1,
                 "Somewhat disagree" = 2,
                 "Neither disagree nor agree" = 3,
@@ -217,13 +229,5 @@ lowhigh5_labels <- c("Much lower" = 1,
                 "About the same" = 3,
                 "Higher" = 4,
                 "Much higher" = 5)
-                
-labeltemplate <- c("" = 1,
-                   "" = 2,
-                   "" = 3,
-                   "" = 4,
-                   "" = 5,
-                   "Don't know" = 7,
-                   "Refused" = 9)
 ```
 
