@@ -33,7 +33,7 @@ Planning our cleaning process and analysis plan is an important but often overlo
 
 Since we're using R, lets install and load the required packages
  * tidyverse for data wrangling
- * haven, labelled, likert, and sjmisc for labelled data transformation
+ * haven, labelled, and sjmisc for labelled data transformation
 
 ```{r}
 install.packages(c("tidyverse", "haven", "labelled", "sjmisc"))
@@ -44,7 +44,7 @@ library(labelled)
 library(sjmisc)
 ```
 
-First, we will specify the number of cases for our test datset.  In this case, we've defined the object `n_sample` the number 100 cases, which we use in the creation of our data set.  We create the data set using `tibble()` to work with tidyverse package. First, we use `seq()` to create a unique, sequential id variable, the length of the sample `n_sample`. The next variables are created using `sample.int()` that samples integers that will represent questionnaire responses to a Likert scale.  We are not dealing with missing data in this tutorial. Remember to specify `replace = TRUE` in order to sample with replacement. Our grouping variable, prepost, is created as a character variable using `sample()` to demonstrate how to create text variables and to show the differences in cleaning various types of data.  
+First, we will specify the number of cases for our test data set.  In this case, we've defined the object `n_sample` the number 100 cases, which we use in the creation of our data set.  We create the data set using `tibble()` to work with tidyverse package. First, we use `seq()` to create a unique, sequential id variable, the length of the sample `n_sample`. The next variables are created using `sample.int()` that samples integers that will represent questionnaire responses to a Likert scale.  We are not dealing with missing data in this tutorial. Remember to specify `replace = TRUE` in order to sample with replacement. Our grouping variable, prepost, is created as a character variable using `sample()` to demonstrate how to create text variables and to show the differences in cleaning various types of data.  
 
 ```{r}
 n_sample <- 100
@@ -67,7 +67,7 @@ dat <- tibble(
  
 # <img src="img/coreelement.png" alt="element" width="25"/> defining scales
 
-Now we define our Likert scales for transformation. At the end of the document are some examples of common Likert scales you can use in your transformations along with a template for creating your own. By saving these as objectswe only need to define them once.
+Now we define our Likert scales for transformation. At the end of the document are some examples of common Likert scales you can use in your transformations along with a template for creating your own. By saving these as objects we only need to define them once.
 
 ```{r}
 # specify the labels for your Likert scales
