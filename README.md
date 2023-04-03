@@ -1,11 +1,11 @@
 # bright byte 1.0 - labelled data and likert scales
 
-<img src="solarislogo.png" alt="Logo" width="350" class = "center"/>
+<img src="solarislogo.png" alt="Logo" width="350"/>
 
 > bright byte series provided by Solaris Consulting Group <br>© 2023 Solaris Consulting Group, LLC. info@solarisconsultinggroup.com
 
  
-# <img src="coreelement.png" alt="element" width="40"/> learning goals 
+# <img src="coreelement.png" alt="element" width="30"/> learning goals 
 
 In this first bright byte, we will answer the following questions: 
  * How can a little pre-cleaning planning improve our data cleaning process?
@@ -20,7 +20,7 @@ You will primarily be using the tidyverse function `mutate()` to transform varia
 This is one particular approach to working with labelled data. There are many others. Take what's new to you and discard the rest.
 
  
-# <img src="coreelement.png" alt="element" width="40"/> a note about naming conventions
+# <img src="coreelement.png" alt="element" width="30"/> a note about naming conventions
 
 Planning our cleaning process and analysis plan is an important but often overlooked step in the data processing pipeline. Creating naming conventions that are easily used allows you to select and transform variables quickly and easily. In survey research, this could be a validated scale or simply questions with the same response options. These conventions do not have to be permanent, but may be dropped after cleaning.  Thinking deeply about your data structure can help avoid misunderstandings and better connect you with your data. Here are a few examples of naming conventions:
  * _r (recoded) 
@@ -30,7 +30,7 @@ Planning our cleaning process and analysis plan is an important but often overlo
  * _rev (reversed)
 
  
-# <img src="coreelement.png" alt="element" width="40"/> create test data
+# <img src="coreelement.png" alt="element" width="30"/> create test data
 
 Since we're using R, lets install and load the required packages
  * tidyverse for data wrangling
@@ -66,7 +66,7 @@ dat <- tibble(
 ```
 
  
-# <img src="coreelement.png" alt="element" width="40"/> defining scales
+# <img src="coreelement.png" alt="element" width="30"/> defining scales
 
 Now we define our Likert scales for transformation. At the end of the document are some examples of common Likert scales you can use in your transformations along with a template for creating your own. By saving these as objectswe only need to define them once.
 
@@ -80,7 +80,7 @@ da5_labels <- c("Strongly disagree" = 1,
 ```
 
  
-# <img src="coreelement.png" alt="element" width="40"/> labelling numeric variables
+# <img src="coreelement.png" alt="element" width="30"/> labelling numeric variables
 
 Now that we have our test data and have defined our Likert scales, lets apply those labels and save the transformed data into the new data set `dat_labelled`.  In this case we are using `mutate()` to transform our variables. By using `across(variables, ~labelled())` within `mutate()` we can apply a function, in this case `labelled()`, to multiple variables. `contains()` makes selecting by naming conventions easy, here we're selecting the variables whose names contains "q".  Finally, `~labelled(.x,)` applies the labels we defined above (the ~ and .x are necessary programming nonsense - just make sure they're there for now).
 
@@ -100,7 +100,7 @@ lapply(dat_labelled %>% select(contains("q")), str)
 ```
 
  
-# <img src="coreelement.png" alt="element" width="40"/> labelling character variables 
+# <img src="coreelement.png" alt="element" width="30"/> labelling character variables 
 
 Here we use `factor()` within `mutate()` to overwrite our prepost with a factorized version of itself. We must remember to explicitly define the levels within `factor()` since the default numeric order is alphabetically which poses a problem for Pres and Posts. Now, rather than using pre-defined labels, we can define the labels directly in `labelled()` through the `labels = c()` option.  Again, be sure to check any transformation.
 
@@ -118,7 +118,7 @@ str(dat_labelled.1$prepost)
 ```
 
  
-# <img src="coreelement.png" alt="element" width="40"/> recoding variables
+# <img src="coreelement.png" alt="element" width="30"/> recoding variables
 
 Let's create new variables with the agree and disagree categories collapsed and provide these new variables with an appended name. We will again use mutate(across(contains())) to apply `rec()` across the desired variables. Specifying the recode within `rec()` use the pattern `rec = "old=new;old,old=new"`, chaining grouped recodes together with `;`.  The `.names` option within `across()` appends a naming convention to the new transformed variables. In this case we are adding "_rda3" to indicate that these variables have been recoded to a three category disagree agree scale. `{col}` in this case keeps the original column name at the front.
 
@@ -138,7 +138,7 @@ lapply(dat_labelled.2 %>% select(c(starts_with("q"), ends_with("rda3"))), str)
 ```
 
  
-# <img src="coreelement.png" alt="element" width="40"/> saving data
+# <img src="coreelement.png" alt="element" width="30"/> saving data
 
 We can  use haven's `write_sav()` to write our labelled data as an spss data file `.sav`, or use `write_rds()` to write the data as an r data file `.rds`.
 
@@ -148,7 +148,7 @@ write_rds(dat_labelled.2, "path/to/data/filename.rds")
 ```
 
  
-# <img src="coreelement.png" alt="element" width="40"/> example Likert scales
+# <img src="coreelement.png" alt="element" width="30"/> example Likert scales
 
 ```{r}
 # template for your own likert scales
