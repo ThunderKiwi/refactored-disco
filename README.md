@@ -205,3 +205,5 @@ labeltemplate <- c("" = 1,
                    "Don't know" = 7,
                    "Refused" = 9)
 ```
+
+![Logo](solarislogo.png)
