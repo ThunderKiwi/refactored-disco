@@ -1,12 +1,10 @@
-# bRight byte series
+# bRight byte series 1.0 - labelled data and likert scales
 
 <img src="img/solarislogo.png" alt="Logo" width="300"/>
 
 The bRight byte series aims to provide useful R code snippets to assist in solving real world data issues. This is one particular approach to working with labelled data - there are many others. Please take what's new to you and feel free to discard the rest. 
 
-> bRight byte series provided by Solaris Consulting Group <br>© 2023 Solaris Consulting Group, LLC. info@solarisconsultinggroup.com
- 
-# bRight byte series 1.0 - labelled data and likert scales
+> © 2023 Solaris Consulting Group, LLC. info@solarisconsultinggroup.com
 
 # <img src="img/coreelement.png" alt="element" width="25"/> learning goals 
 
